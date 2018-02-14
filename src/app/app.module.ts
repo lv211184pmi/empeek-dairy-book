@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -5,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ItemsComponent } from './items/items.component';
 import { CommentsComponent } from './comments/comments.component';
+import { StorageService } from './services/storage.service';
 
 
 @NgModule({
@@ -16,7 +18,7 @@ import { CommentsComponent } from './comments/comments.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

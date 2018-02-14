@@ -3,6 +3,7 @@
   <div class="input-block">
     <input
       #item
+      required
       type="text" 
       class="form-control"
       placeholder="Type name here...">
@@ -15,7 +16,9 @@
     class="list-group-item">
     <div class="event-row">
       <p class="item-name">{{ event.title }}</p>
-      <button class="btn btn-default btn-sm delete-button">Delete</button>
+      <button 
+        class="btn btn-default btn-sm delete-button"
+        (click)="deleteItem(event)">Delete</button>
     </div>
   </li>  
 </ul>
