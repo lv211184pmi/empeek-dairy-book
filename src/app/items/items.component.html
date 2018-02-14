@@ -1,0 +1,21 @@
+<div class="items-head">
+  <h2>Items</h2>
+  <div class="input-block">
+    <input
+      #item
+      type="text" 
+      class="form-control"
+      placeholder="Type name here...">
+    <button class="btn btn-default" (click)="addItem(item)">Add new</button>
+  </div>
+</div>
+<ul class="list-group">
+  <li 
+    *ngFor="let event of dairyEvents"
+    class="list-group-item">
+    <div class="event-row">
+      <p class="item-name">{{ event.title }}</p>
+      <button class="btn btn-default btn-sm delete-button">Delete</button>
+    </div>
+  </li>  
+</ul>

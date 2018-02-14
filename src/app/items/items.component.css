@@ -1,0 +1,59 @@
+.items-head {
+    padding: 1.5rem 1rem 1rem 1.5rem;
+}
+
+h2 {
+    font-weight: 300;
+    color: #2b2f3e;
+}
+
+.input-block > input {
+    float: left;
+    width: 70%;
+}
+
+.input-block > input::-moz-placeholder {
+    color:#b3b3b3;
+}
+
+.input-block > button {
+    float: right;
+    width: 28%;
+    background-color: #27ccc0;
+    color: #fff;
+}
+
+.input-block::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.list-group-item {
+    /* height: 3.7rem; */
+    padding: 0;
+    border: none;
+    margin-bottom: .1rem;
+}
+
+.event-row {
+    height: 3.2rem;
+    border-bottom: 1px solid #f2f2f2;
+    margin:  0 1rem 0 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.event-row>p {
+    width: 78%;
+    margin: 0;
+}
+
+.event-row>button {
+    width: 20%;
+    color: #ff4c70;
+    background-color: #fff;
+    border: 1px solid #ff4c70;
+    border-radius: .125rem;
+}
