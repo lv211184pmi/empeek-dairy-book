@@ -38,6 +38,8 @@ export class ItemsComponent implements OnInit {
     let index = this.dairyEvents.indexOf(item);
     this.dairyEvents.splice(index, 1);
     this.serviceLS.setItem(this.dairyEvents);
+    item = '';
+    this.commentSelected.emit(item);
   }
 
   showComment(item: DairyEvent) {

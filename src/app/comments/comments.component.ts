@@ -1,5 +1,6 @@
 import { DairyEvent } from './../dairyEvent.model';
 import { Component, OnInit, Input } from '@angular/core';
+import { CommunicationService } from '../services/communication.service';
 
 @Component({
   selector: 'comments',
@@ -8,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CommentsComponent implements OnInit {
   @Input() dairyEvent: DairyEvent;
-  constructor() { }
+  constructor(private communication: CommunicationService) { }
 
   ngOnInit() {
   }
