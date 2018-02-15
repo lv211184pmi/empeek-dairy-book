@@ -38,3 +38,9 @@ items, comments {
     box-shadow: .1rem .1rem .12rem #d0d0d0;
     background-color: #fff
 }
+ comments {
+     box-sizing: border-box;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+ }

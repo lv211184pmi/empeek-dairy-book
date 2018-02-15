@@ -15,7 +15,14 @@
     *ngFor="let event of dairyEvents"
     class="list-group-item">
     <div class="event-row">
-      <p class="item-name">{{ event.title }}</p>
+      <a
+        href="#"
+        (click)="showComment(event)">
+        <p class="item-name">
+          {{ event.title }}
+          <span class="counter badge">{{event.comments.length}}</span>
+        </p>
+      </a>
       <button 
         class="btn btn-default btn-sm delete-button"
         (click)="deleteItem(event)">Delete</button>

@@ -18,7 +18,9 @@ import { StorageService } from './services/storage.service';
   imports: [
     BrowserModule
   ],
-  providers: [StorageService],
+  providers: [
+    StorageService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

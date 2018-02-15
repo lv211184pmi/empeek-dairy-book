@@ -4,8 +4,14 @@
     <h4>Comment with no sense</h4>
   </div>
   <div class="app-content">
-    <items></items>
-    <comments></comments>
+    <items (commentSelected)="selectedComment = $event"></items>
+    <comments
+      *ngIf="selectedComment; else defaultComment"
+      [dairyEvent]="selectedComment">
+    </comments>
+    <ng-template #defaultComment>
+      <h6>No Dairy item was selected yet...</h6>
+    </ng-template>
   </div>
 </div>
 

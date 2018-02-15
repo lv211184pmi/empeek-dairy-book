@@ -1,3 +1,31 @@
-<p>
-  comments works!
-</p>
+<div class="comments-title">
+    <h2 *ngIf="dairyEvent.comments.length > 0; else defaultComment">
+      Comments #{{ dairyEvent.id }}
+    </h2>
+    <ng-template #defaultComment>
+      <h4>You have no comments for this item</h4>
+    </ng-template>
+</div>
+<div class="comments-block">
+  <ul class="list-group">
+    <li 
+      class="list-group-item"
+      *ngFor="let comment of dairyEvent.comments">
+      <div class="comment-row">
+        <div class="comment-icon"></div>
+        <p class="comment-text">
+          {{ comment }}
+        </p>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="new-comment-block">
+  <div class="comment-no-icon"></div>
+  <input 
+    #newComment
+    type="textarea"
+    class="new-comment-text"
+    placeholder="Type your comment and press 'CTRL+Enter'..."
+    (keydown.control.enter)="addComment(newComment)">
+</div>

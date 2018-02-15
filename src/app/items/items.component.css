@@ -45,9 +45,24 @@ h2 {
     justify-content: space-between;
     align-items: center;
 }
-.event-row>p {
+
+.event-row>a {
     width: 78%;
+    text-decoration: none;
+    font-weight: bold;
+    color: #2b2f3e;
+}
+
+.event-row>a, p {
     margin: 0;
+}
+
+.badge {
+    margin-left: .7rem;
+    padding: .2rem .5rem;
+    background: #27ccc0;
+    color: #fff;
+    border-radius: 40%;
 }
 
 .event-row>button {
