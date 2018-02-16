@@ -1,10 +1,7 @@
-import { Component, 
-         OnInit, 
-         EventEmitter, 
-         Output} from '@angular/core';
+import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 
-import { StorageService } from './../services/storage.service';
 import { DairyEvent } from '../dairyEvent.model';
+import { CommunicationService } from '../services/communication.service';
 
 @Component({
   selector: 'items',
@@ -12,34 +9,28 @@ import { DairyEvent } from '../dairyEvent.model';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-  index: number = 1;
+  
   dairyEvents: DairyEvent[] = [];
   @Output() commentSelected = new EventEmitter<DairyEvent>();
 
-  constructor(private serviceLS: StorageService) { }
-
-  getItems(){
-    let items = this.serviceLS.getData();
-    this.dairyEvents = JSON.parse(items);
-    if(!this.dairyEvents) {
-      this.dairyEvents = [];
-    }     
+  constructor(private comunication: CommunicationService) {
+    this.comunication.eventsArrUpdated.subscribe(
+      (events: DairyEvent[]) => {
+        this.dairyEvents = events;
+      }
+    )
   }
 
   addItem(item: HTMLInputElement) {
-    let dairyEvent = new DairyEvent(this.index, item.value, []);
-    this.dairyEvents.push(dairyEvent);
-    this.serviceLS.setItem(this.dairyEvents);
+    this.comunication.createItem(item);
+    this.comunication.getItems();
     item.value='';
-    this.index++;
   }
 
   deleteItem(item) {
-    let index = this.dairyEvents.indexOf(item);
-    this.dairyEvents.splice(index, 1);
-    this.serviceLS.setItem(this.dairyEvents);
+    this.comunication.deleteItem(item);
     item = '';
-    this.commentSelected.emit(item);
+    this.commentSelected.emit(item);  
   }
 
   showComment(item: DairyEvent) {
@@ -47,6 +38,6 @@ export class ItemsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getItems();
+    this.comunication.getItems();
   }
 }

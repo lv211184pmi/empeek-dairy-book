@@ -16,6 +16,7 @@ export class CommentsComponent implements OnInit {
 
   addComment(comment: HTMLInputElement) {
     this.dairyEvent.comments.push(comment.value);
+    this.communication.updateItem(this.dairyEvent);
     comment.value = '';
   }
 
