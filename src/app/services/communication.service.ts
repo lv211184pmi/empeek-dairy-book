@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from "@angular/core";
 
 import { StorageService } from "./storage.service";
-import { DairyEvent } from "../dairyEvent.model";
+import { DairyEvent } from "../shared/dairyEvent.model";
 
 @Injectable()
 export class CommunicationService {
@@ -21,7 +21,7 @@ export class CommunicationService {
     }
 
     createItem(item: HTMLInputElement) {
-        let dairyEvent = new DairyEvent(this.index, item.value, []);
+        let dairyEvent = new DairyEvent(false, item.value, [], this.index);
         this.dairyEvents.push(dairyEvent);
         this.serviceLS.setItem(this.dairyEvents);
         this.index++;

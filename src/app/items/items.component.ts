@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output} from '@angular/core';
 
-import { DairyEvent } from '../dairyEvent.model';
+import { DairyEvent } from '../shared/dairyEvent.model';
 import { CommunicationService } from '../services/communication.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { CommunicationService } from '../services/communication.service';
   styleUrls: ['./items.component.css']
 })
 export class ItemsComponent implements OnInit {
-  
+
   dairyEvents: DairyEvent[] = [];
   @Output() commentSelected = new EventEmitter<DairyEvent>();
 
@@ -22,9 +22,11 @@ export class ItemsComponent implements OnInit {
   }
 
   addItem(item: HTMLInputElement) {
-    this.comunication.createItem(item);
-    this.comunication.getItems();
-    item.value='';
+    if(item.value){
+      this.comunication.createItem(item);
+      this.comunication.getItems();
+      item.value='';
+    }
   }
 
   deleteItem(item) {
@@ -35,6 +37,22 @@ export class ItemsComponent implements OnInit {
 
   showComment(item: DairyEvent) {
     this.commentSelected.emit(item);
+    this.activateItem(item);
+  }
+
+  activateItem(item: DairyEvent) {
+    let status =  this.dairyEvents.map((element) => {
+      if(element.active){
+        return element.active = !element.active;
+      } else {
+        return element.active = false;
+      }
+    });
+    return item.active = true;
+  }
+
+  getIndex(item: DairyEvent) {
+    return this.dairyEvents.indexOf(item);
   }
 
   ngOnInit() {

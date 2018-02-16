@@ -1,4 +1,4 @@
-import { DairyEvent } from './../dairyEvent.model';
+import { DairyEvent } from '../shared/dairyEvent.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { CommunicationService } from '../services/communication.service';
 
@@ -9,10 +9,8 @@ import { CommunicationService } from '../services/communication.service';
 })
 export class CommentsComponent implements OnInit {
   @Input() dairyEvent: DairyEvent;
+  
   constructor(private communication: CommunicationService) { }
-
-  ngOnInit() {
-  }
 
   addComment(comment: HTMLInputElement) {
     this.dairyEvent.comments.push(comment.value);
@@ -20,4 +18,7 @@ export class CommentsComponent implements OnInit {
     comment.value = '';
   }
 
+  ngOnInit() {
+    console.log(this.dairyEvent);
+  }
 }

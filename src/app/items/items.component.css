@@ -36,6 +36,14 @@ h2 {
     margin-bottom: .1rem;
 }
 
+.list-group-item.active{
+    margin-left: -.18rem;
+    border: none;
+    border-left: .2rem solid #ff2f5a;
+    background-color: #fff;
+    border-radius: 0;
+}
+
 .event-row {
     height: 3.2rem;
     border-bottom: 1px solid #f2f2f2;
@@ -71,4 +79,9 @@ h2 {
     background-color: #fff;
     border: 1px solid #ff4c70;
     border-radius: .125rem;
+}
+
+.event-row>button:hover {
+    background-color: #ff4c70;
+    color: #fff;
 }

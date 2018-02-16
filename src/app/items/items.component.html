@@ -1,19 +1,25 @@
 <div class="items-head">
   <h2>Items</h2>
-  <div class="input-block">
-    <input
-      #item
-      required
-      type="text" 
-      class="form-control"
-      placeholder="Type name here...">
-    <button class="btn btn-default" (click)="addItem(item)">Add new</button>
-  </div>
+  <form>
+    <div class="form-group input-block">
+      <input
+        type="text" 
+        class="form-control"
+        placeholder="Type name here..."
+        ngModel
+        name="item"
+        #item
+        required>
+      <button class="btn btn-default" (click)="addItem(item)">Add new</button>
+    </div>
+  </form>
+  <div class="alert alert-danger" *ngIf="!item.valid && item.touched"></div>
 </div>
 <ul class="list-group">
   <li 
-    *ngFor="let event of dairyEvents"
-    class="list-group-item">
+    *ngFor="let event of dairyEvents, let i=index"
+    class="list-group-item"
+    [class.active]="event.active">
     <div class="event-row">
       <a
         href="#"

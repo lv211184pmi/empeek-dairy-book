@@ -1,6 +1,6 @@
 <div class="comments-title">
     <h2 *ngIf="dairyEvent.comments.length > 0; else defaultComment">
-      Comments #{{ dairyEvent.id }}
+      Comments #{{ dairyEvent.index }}
     </h2>
     <ng-template #defaultComment>
       <h4>You have no comments for this item</h4>
